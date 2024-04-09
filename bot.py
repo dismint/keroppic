@@ -61,4 +61,10 @@ async def on_message(message):
 token1 = "MTIyNzI4NDQzNzQ0NDU5MTY0Nw."
 token2 = "G28OWq.sqNLoabV7PPCL9"
 token3 = "EWVrT3rG2GayKD8Jg9IL-fXw"
-client.run(token1 + token2 + token3)
+
+tk1 = "MTIyNzMzODk1OTc0MzQ4ODA2M"
+tk2 = "Q.GPGFAP.4BIXFDUmXmRHj3"
+tk3 = "jiFTSsRmnToBtmMGz-epOPxw"
+
+# client.run(token1 + token2 + token3)
+client.run(tk1 + tk2 + tk3)
