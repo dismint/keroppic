@@ -1,0 +1,24 @@
+{
+    "w_min": 16,
+    "h_min": 25,
+    "w_desired": 64,
+    "h_desired": 100,
+    "row_width": 20,
+    "pad": [10, 2, 30, 2],
+    "section_order": [
+        "ALBUM PHOTOCARDS",
+        "STORE BENEFITS / LUCKY DRAWS",
+        "BROADCAST / SPECIAL",
+        "MERCH / COLLABS / OTHER"
+    ],
+    "color_outline": [86, 174, 87],
+    "color_mlight": [225, 240, 218],
+    "color_mslight": [240, 255, 233],
+    "color_mdark": [165, 221, 155],
+    "color_high1": [247, 202, 201],
+    "color_high2": [204, 204, 255],
+    "color_have_tint": [240, 240, 240, 220],
+    "color_ship_tint": [86, 174, 87, 220],
+    "color_join_tint": [255, 221, 60, 220],
+    "color_pay_tint": [171, 196, 255, 220]
+}
