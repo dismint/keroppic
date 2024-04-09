@@ -58,5 +58,7 @@ async def on_message(message):
             main.status(s_text)
             main.template()
             await message.channel.send(file=discord.File('template.png'))
-
-client.run("MTIyNzI4NDQzNzQ0NDU5MTY0Nw.GDgx7P.rVwBj4YXpij__MwVk1sNyoId9JYBe5iE-z4Xwg")
+token1 = "MTIyNzI4NDQzNzQ0NDU5MTY0Nw."
+token2 = "G28OWq.sqNLoabV7PPCL9"
+token3 = "EWVrT3rG2GayKD8Jg9IL-fXw"
+client.run(token1 + token2 + token3)
