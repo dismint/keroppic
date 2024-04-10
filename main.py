@@ -15,8 +15,13 @@ defs = {}
 database = {} 
 
 verbose = True
-filter_s = ""
-status_s = ""
+
+filters = {
+    "era": "",
+    "desc": "",
+    "info": "",
+    "status": ""
+}
 
 ####################
 # helper functions #
@@ -57,6 +62,10 @@ def dump_database():
 
     with open("database.json", "w") as f:
         dump(database, f, indent=4)
+
+def load_prereqs():
+    load_defs()
+    load_database()
 
 def get_text(text, font, size, width):
     font = ImageFont.truetype(f"fonts/{font}", size)
@@ -126,9 +135,28 @@ def scale_to_size(image):
 
     return image.resize((defs["w_desired"], defs["h_desired"]), Image.LANCZOS)
 
+def get_next_available():
+    global database
+
+    taken = set()
+    for img in database:
+        taken.add(int(img))
+    for i in range(1000):
+        if i not in taken:
+            return i
+
 #############
 # functions #
 #############
+
+def del_img(img):
+    global database
+
+    if img not in database:
+        return f"file `{img}` does not exist :c"
+    del database[img]
+    dump_database()
+    return f"deleted `{img}`!"
 
 def process_images():
     global database
@@ -143,34 +171,40 @@ def process_images():
         image = crop_to_ratio(image)
         image.save(f"img/cropped/{file}")
         database[name] = {
-            "description": "",
+            "desc": "",
             "section": "",
-            "subsection": "",
-            "status": ""
+            "era": "",
+            "status": "",
+            "info": ""
         }
     dump_database()
 
 def gen_section(section):
     global database
+    global filters
 
     # find images matching section
     img_d, imgs = {}, []
     for img in database:
         if database[img]["section"] == section:
-            if database[img]["subsection"] not in img_d:
-                img_d[database[img]["subsection"]] = []
-            img_d[database[img]["subsection"]].append(img)
+            if database[img]["era"] not in img_d:
+                img_d[database[img]["era"]] = []
+            img_d[database[img]["era"]].append(img)
 
-    # organize images by subsection, insert dummy between
+    # organize images by era, insert dummy between
     res_folder = f"{defs['w_desired']}x{defs['h_desired']}"
     makedirs(f"img/scaled/{res_folder}", exist_ok=True)
     for sub in img_d:
-        if filter_s.upper() not in sub.upper():
+        if filters["era"].upper() not in sub.upper():
             continue
         imgs.append((sub, ""))
         capt = len(imgs)
         for img in img_d[sub]:
-            if status_s.upper() not in database[img]["status"].upper():
+            if filters["status"].upper() not in database[img]["status"].upper():
+                continue
+            if filters["info"].upper() not in database[img]["info"].upper():
+                continue
+            if filters["desc"].upper() not in database[img]["desc"].upper():
                 continue
             if not path.exists(f"img/scaled/{res_folder}/{img}.png"):
                 image = Image.open(f"img/cropped/{img}.png")
@@ -216,7 +250,7 @@ def gen_section(section):
             xpp, ypp = x - defs["pad"][3], y - top_off
             line_c.rectangle((xpp, ypp, xpp+defs["pad"][1]*2, ypp+padded_h), fill=ss_colors[ss_color])
         else:
-            text = database[name]["description"]
+            text = database[name]["desc"]
             size, lines = text_to_lines_fit(text, 1, 10, "Arkhip_font.ttf", (w, defs["pad"][2]))
             for i, line in enumerate(lines):
                 section.alpha_composite(line, (x, y+h+size*i))
@@ -293,6 +327,10 @@ def gen_sections(sections=None):
             return 1000
     sections.sort(key=sort_order)
     section_imgs = {section: [gen_section(section)] for section in sections}
+    section_imgs = {section: section_imgs[section] for section in section_imgs if section_imgs[section][0].size[1] > 0}
+    if not section_imgs:
+        # return an image with the text, "no matches"
+        return get_text("no matches", "Arkhip_font.ttf", 100, 100)
     width = max([section_imgs[section][0].size[0] for section in section_imgs])
     x_fin, y_fin = width + 50, 0
     for section in section_imgs:
@@ -384,47 +422,62 @@ def gen_template():
 
     template.save("template.png", compress_level=1)
 
+#######
+# API #
+#######
+
 def template(p_verbose=True):
     global verbose
     verbose = p_verbose
 
-    # ALWAYS load before
-    load_defs()
-    load_database()
-
     gen_template()
 
-def mod(img, changes):
+def mod(imgs, changes):
     global database
 
-    # ALWAYS load before
-    load_defs()
-    load_database()
+    ret_msgs = []
+    for img in imgs:
+        if img not in database:
+            ret_msgs.append(f"file `{img}` does not exist :c")
+            continue
 
-    if img not in database:
-        return False
+        for change in changes:
+            if change not in database[img]:
+                ret_msgs.append(f"key `{change}` does not exist :c")
+                return ret_msgs
 
-    for change in changes:
-        database[img][change] = changes[change]
+            database[img][change] = changes[change]
 
     dump_database()
-    return True
+    return ret_msgs
 
-def filter(f_text):
-    global filter_s
+def look(img):
+    global database
 
-    filter_s = f_text
+    if img not in database:
+        return f"file `{img}` does not exist :c"
+    str_database = ""
+    for key in ["status", "desc", "section", "era", "info"]:
+        str_database += f"{key}: {database[img][key]}\n\n"
+    return f"```-- {img} --\n\n{str_database}```".strip()
 
-    return True
+def filter(flts):
+    global filters
 
-def status(s_text):
-    global status_s
+    if not flts:
+        filters = {
+            "era": "",
+            "desc": "",
+            "info": "",
+            "status": ""
+        }
 
-    status_s = s_text
-
-    return True
+    for flt in flts:
+        if flt not in filters:
+            continue
+        filters[flt] = flts[flt]
 
 if __name__ == "__main__":
-    template()
+    pass
 
 
