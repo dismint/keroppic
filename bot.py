@@ -95,13 +95,17 @@ async def on_message(message):
     else:
         await message.channel.send("keroppi doesnt know what that means :c maybe try `help`?")
 
-token1 = "MTIyNzI4NDQzNzQ0NDU5MTY0Nw."
-token2 = "G28OWq.sqNLoabV7PPCL9"
-token3 = "EWVrT3rG2GayKD8Jg9IL-fXw"
+j_toks = [
+    "MTIyNzI4NDQzNzQ0NDU5MTY0Nw.",
+    "G28OWq.sqNLoabV7PPCL9",
+    "EWVrT3rG2GayKD8Jg9IL-fXw",
+]
 
-tk1 = "MTIyNzMzODk1OTc0MzQ4ODA2M"
-tk2 = "Q.GPGFAP.4BIXFDUmXmRHj3"
-tk3 = "jiFTSsRmnToBtmMGz-epOPxw"
+a_toks = [
+    "MTIyNzMzODk1OTc0MzQ4ODA2M",
+    "Q.GPGFAP.4BIXFDUmXmRHj3",
+    "jiFTSsRmnToBtmMGz-epOPxw",
+]
 
-# client.run(token1 + token2 + token3)
-client.run(tk1 + tk2 + tk3)
+# client.run("".join(j_toks))
+client.run("".join(a_toks))
