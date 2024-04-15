@@ -1,9 +1,8 @@
 # | 🙑  dismint
 # | YW5uaWUgPDM=
 
-from PIL import Image, ImageDraw, ImageFont, ImageEnhance
+from PIL import Image, ImageDraw, ImageFont
 from math import ceil, floor
-from time import time
 from json import load, dump
 from os import listdir, path, makedirs
 
