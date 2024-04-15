@@ -353,7 +353,6 @@ def gen_sections(sections=None):
 
 def gen_header(w, h):
     header = Image.new("RGBA", (w, h), defs["color_mlight"])
-    canvas = ImageDraw.Draw(header)
     cmp = Image.new("L", (1, 1))
     cmp = ImageDraw.Draw(cmp)
 
