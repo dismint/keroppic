@@ -30,11 +30,13 @@ async def on_message(message):
     info = message.content.split()
 
     if info[0] == "see":
+        card_count = 0
         if len(info) > 1 and info[1] == "clean":
-            main.template(p_verbose=False)
+            card_count = main.template(p_verbose=False)
         else:
-            main.template()
+            card_count = main.template()
         await message.channel.send(file=discord.File('template.png'))
+        await message.channel.send(f"keroppi sees {card_count} images! :3") 
 
     elif info[0] == "mod":
         if len(info) < 4:
@@ -49,8 +51,9 @@ async def on_message(message):
                 await message.channel.send(msg)
         else:
             await message.channel.send(f"modified everything correctly! :3")
-        main.template()
+        card_count = main.template()
         await message.channel.send(file=discord.File('template.png'))
+        await message.channel.send(f"keroppi sees {card_count} images! :3")
 
     elif info[0] == "look":
         if len(info) != 2:
@@ -79,8 +82,9 @@ async def on_message(message):
         for i in range(1, len(info), 2):
             flts[info[i]] = info[i + 1]
         main.filter(flts)
-        main.template()
+        card_count = main.template()
         await message.channel.send(file=discord.File('template.png'))
+        await message.channel.send(f"keroppi sees {card_count} images! :3")
 
     elif "help" in info:
         await message.channel.send("keroppi can do these things: \n```"

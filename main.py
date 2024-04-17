@@ -193,6 +193,7 @@ def gen_section(section):
     # organize images by era, insert dummy between
     res_folder = f"{defs['w_desired']}x{defs['h_desired']}"
     makedirs(f"img/scaled/{res_folder}", exist_ok=True)
+    img_count = 0
     for sub in img_d:
         if filters["era"].upper() not in sub.upper():
             continue
@@ -210,6 +211,7 @@ def gen_section(section):
                 image = scale_to_size(image)
                 image.save(f"img/scaled/{res_folder}/{img}.png")
             imgs.append((Image.open(f"img/scaled/{res_folder}/{img}.png"), img))
+            img_count += 1
         if len(imgs) == capt:
             imgs.pop()
     
@@ -287,7 +289,7 @@ def gen_section(section):
         xpp, ypp = x - defs["pad"][3], y - top_off
         line_c.rectangle((xpp, ypp, xpp+w+side_pad, ypp+line_height), fill=ss_colors[ss_color])
 
-    return section
+    return section, img_count
 
 def gen_section_header(section, width):
     global defs
@@ -326,10 +328,12 @@ def gen_sections(sections=None):
             return 1000
     sections.sort(key=sort_order)
     section_imgs = {section: [gen_section(section)] for section in sections}
+    img_count = sum([section_imgs[section][0][1] for section in section_imgs])
+    section_imgs = {section: [section_imgs[section][0][0]] for section in sections}
     section_imgs = {section: section_imgs[section] for section in section_imgs if section_imgs[section][0].size[1] > 0}
     if not section_imgs:
         # return an image with the text, "no matches"
-        return get_text("no matches", "Arkhip_font.ttf", 100, 100)
+        return get_text("no matches", "Arkhip_font.ttf", 100, 100), 0
     width = max([section_imgs[section][0].size[0] for section in section_imgs])
     x_fin, y_fin = width + 50, 0
     for section in section_imgs:
@@ -349,7 +353,7 @@ def gen_sections(sections=None):
         y_offset += header.size[1] + 35
         final_img.alpha_composite(section_img, (25, y_offset))
         y_offset += section_img.size[1] + 35
-    return final_img
+    return final_img, img_count
 
 def gen_header(w, h):
     header = Image.new("RGBA", (w, h), defs["color_mlight"])
@@ -395,7 +399,7 @@ def gen_header(w, h):
     return header
 
 def gen_template():
-    content = gen_sections()
+    content, img_count = gen_sections()
     sw = defs["w_desired"]
     b_thick = sw // 2
     header_size = defs["h_desired"] * 3
@@ -420,6 +424,8 @@ def gen_template():
 
     template.save("template.png", compress_level=1)
 
+    return img_count
+
 #######
 # API #
 #######
@@ -428,7 +434,7 @@ def template(p_verbose=True):
     global verbose
     verbose = p_verbose
 
-    gen_template()
+    return gen_template()
 
 def mod(imgs, changes):
     global database
@@ -476,6 +482,7 @@ def filter(flts):
         filters[flt] = flts[flt]
 
 if __name__ == "__main__":
-    pass
+    load_prereqs()
+    gen_template()
 
 
