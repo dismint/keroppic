@@ -51,7 +51,7 @@
     },
     "7": {
         "section": "ALBUM PHOTOCARDS",
-        "status": "ship",
+        "status": "have",
         "info": "",
         "desc": "mystery ver",
         "era": "MELTING POINT"
@@ -86,7 +86,7 @@
     },
     "12": {
         "section": "ALBUM PHOTOCARDS",
-        "status": "ship",
+        "status": "have",
         "info": "",
         "desc": "limited a",
         "era": "YURA YURA"
@@ -100,7 +100,7 @@
     },
     "14": {
         "section": "ALBUM PHOTOCARDS",
-        "status": "ship",
+        "status": "have",
         "info": "",
         "desc": "solo jacket",
         "era": "YURA YURA"
@@ -177,7 +177,7 @@
     },
     "25": {
         "section": "STORE BENEFITS / LUCKY DRAWS",
-        "status": "ship",
+        "status": "have",
         "info": "",
         "desc": "tower records b",
         "era": "YOUTH IN THE SHADE"
@@ -422,7 +422,7 @@
     },
     "60": {
         "section": "STORE BENEFITS / LUCKY DRAWS",
-        "status": "",
+        "status": "have",
         "info": "",
         "desc": "musicplant kakao friends",
         "era": "MELTING POINT"
@@ -506,35 +506,35 @@
     },
     "72": {
         "section": "STORE BENEFITS / LUCKY DRAWS",
-        "status": "ship",
+        "status": "have",
         "info": "",
         "desc": "withmuu ld digipack",
         "era": "MELTING POINT"
     },
     "73": {
         "section": "STORE BENEFITS / LUCKY DRAWS",
-        "status": "ship",
+        "status": "have",
         "info": "",
         "desc": "withmuu ld photo+digi",
         "era": "MELTING POINT"
     },
     "74": {
         "section": "STORE BENEFITS / LUCKY DRAWS",
-        "status": "ship",
+        "status": "have",
         "info": "",
         "desc": "jumpup ld photobook",
         "era": "MELTING POINT"
     },
     "75": {
         "section": "STORE BENEFITS / LUCKY DRAWS",
-        "status": "ship",
+        "status": "have",
         "info": "",
         "desc": "jumpup ld digipack",
         "era": "MELTING POINT"
     },
     "76": {
         "section": "STORE BENEFITS / LUCKY DRAWS",
-        "status": "ship",
+        "status": "have",
         "info": "",
         "desc": "jumpup ld photo+digi",
         "era": "MELTING POINT"
@@ -597,14 +597,14 @@
     },
     "85": {
         "section": "STORE BENEFITS / LUCKY DRAWS",
-        "status": "ship",
+        "status": "have",
         "info": "",
         "desc": "beatroad ld photobook",
         "era": "MELTING POINT"
     },
     "86": {
         "section": "STORE BENEFITS / LUCKY DRAWS",
-        "status": "ship",
+        "status": "have",
         "info": "",
         "desc": "beatroad ld digipack",
         "era": "MELTING POINT"
@@ -625,7 +625,7 @@
     },
     "89": {
         "section": "STORE BENEFITS / LUCKY DRAWS",
-        "status": "ship",
+        "status": "have",
         "info": "",
         "desc": "applemusic ld digipack",
         "era": "MELTING POINT"
@@ -688,7 +688,7 @@
     },
     "98": {
         "section": "STORE BENEFITS / LUCKY DRAWS",
-        "status": "ship",
+        "status": "have",
         "info": "",
         "desc": "makestar ld r2 santa",
         "era": "MELTING POINT"
@@ -702,21 +702,21 @@
     },
     "100": {
         "section": "STORE BENEFITS / LUCKY DRAWS",
-        "status": "",
+        "status": "ship",
         "info": "",
         "desc": "tower records",
         "era": "YURA YURA"
     },
     "101": {
         "section": "STORE BENEFITS / LUCKY DRAWS",
-        "status": "",
+        "status": "ship",
         "info": "",
         "desc": "tower records ld",
         "era": "YURA YURA"
     },
     "102": {
         "section": "STORE BENEFITS / LUCKY DRAWS",
-        "status": "",
+        "status": "have",
         "info": "",
         "desc": "tower records ld",
         "era": "YURA YURA"
@@ -821,14 +821,14 @@
     },
     "117": {
         "section": "MERCH / COLLABS / OTHER",
-        "status": "ship",
+        "status": "have",
         "info": "",
         "desc": "unit",
         "era": "BRINGGREEN"
     },
     "118": {
         "section": "MERCH / COLLABS / OTHER",
-        "status": "ship",
+        "status": "have",
         "info": "",
         "desc": "group",
         "era": "BRINGGREEN"
@@ -898,7 +898,7 @@
     },
     "128": {
         "section": "MERCH / COLLABS / OTHER",
-        "status": "ship",
+        "status": "have",
         "info": "",
         "desc": "necklace",
         "era": "2023 FANCON"
@@ -947,7 +947,7 @@
     },
     "135": {
         "section": "MERCH / COLLABS / OTHER",
-        "status": "ship",
+        "status": "have",
         "info": "",
         "desc": "50k benefit week one",
         "era": "THE MOVING SEOUL: POP-UP STORE"
@@ -1031,7 +1031,7 @@
     },
     "147": {
         "section": "MERCH / COLLABS / OTHER",
-        "status": "ship",
+        "status": "have",
         "info": "",
         "desc": "member cover unit",
         "era": "DICON"
@@ -1157,7 +1157,7 @@
     },
     "165": {
         "section": "MERCH / COLLABS / OTHER",
-        "status": "ship",
+        "status": "have",
         "info": "",
         "desc": "",
         "era": "ROMANTIC CROWN 2"
@@ -1276,7 +1276,7 @@
     },
     "182": {
         "section": "MERCH / COLLABS / OTHER",
-        "status": "ship",
+        "status": "have",
         "info": "",
         "desc": "cgv",
         "era": "JAPAN FANCON"
