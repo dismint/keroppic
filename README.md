@@ -1,11 +1,8 @@
 <div align="center">
-<picture>
-  <source media="(prefers-color-scheme: dark)" srcset="img/logo-bright.png">
-  <source media="(prefers-color-scheme: light)" srcset="img/logo.png">
-  <img alt="Logo" src="img/logo.png" width="450px">
-</picture>
   
-#
+<img src="assets/keroppic.png" width="200">
+  
+# Keroppic
 
 A modern registry service powering Trends, Screener, Monitor, and more,<br />
 driven by **Lucene**, **Vert.x**, and the magic of **`citsource`**
